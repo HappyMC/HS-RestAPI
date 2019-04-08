@@ -48,8 +48,24 @@ class HappyShop(private val path: String,
      * TODO: doc
      * @return CancellableRequest
      */
-    fun getShopProducts(id: String, credentials: String, handler: HSHandler<Array<HSShopVisit>>): CancellableRequest {
+    fun getShopProducts(id: String, credentials: String, handler: HSHandler<Array<HSShopProduct>>): CancellableRequest {
         return fuel.get("/shops/$id/products", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
+    }
+
+    /**
+     * TODO: doc
+     * @return CancellableRequest
+     */
+    fun getShopPayments(id: String, credentials: String, handler: HSHandler<Array<HSShopPayment>>): CancellableRequest {
+        return fuel.get("/shops/$id/payments", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
+    }
+
+    /**
+     * TODO: doc
+     * @return CancellableRequest
+     */
+    fun getShopPayment(id: String, credentials: String, paymentId: String, handler: HSHandler<HSShopPayment>): CancellableRequest {
+        return fuel.get("/shops/$id/payments", listOf("credentials" to credentials, "id" to paymentId)).response(HSDeserializer(), handler)
     }
 
 }
