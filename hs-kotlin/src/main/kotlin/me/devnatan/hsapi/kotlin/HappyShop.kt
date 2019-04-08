@@ -1,7 +1,6 @@
 package me.devnatan.hsapi.kotlin
 
 import com.github.kittinunf.fuel.core.FuelManager
-import com.github.kittinunf.fuel.core.ResultHandler
 import com.github.kittinunf.fuel.core.requests.CancellableRequest
 import com.github.kittinunf.fuel.core.response
 
@@ -11,7 +10,7 @@ class HappyShop(private val path: String,
     companion object {
 
         val instance: HappyShop by lazy {
-            HappyShop("https://api.happyshop.net/v1", "?")
+            HappyShop("https://api.XXX.net/v1", "?")
         }
 
     }
@@ -25,7 +24,7 @@ class HappyShop(private val path: String,
      * TODO: doc
      * @return CancellableRequest
      */
-    fun getShops(handler: ResultHandler<HSResponse<Array<HSShop>>>): CancellableRequest {
+    fun getShops(handler: HSHandler<Array<HSShop>>): CancellableRequest {
         return fuel.get("/shops").response(HSDeserializer(), handler)
     }
 
@@ -33,7 +32,7 @@ class HappyShop(private val path: String,
      * TODO: doc
      * @return CancellableRequest
      */
-    fun getShop(id: String, handler: ResultHandler<HSResponse<HSShop>>): CancellableRequest {
+    fun getShop(id: String, handler: HSHandler<HSShop>): CancellableRequest {
         return fuel.get("/shops/$id").response(HSDeserializer(), handler)
     }
 
@@ -41,7 +40,7 @@ class HappyShop(private val path: String,
      * TODO: doc
      * @return CancellableRequest
      */
-    fun getShopVisits(id: String, credentials: String, handler: ResultHandler<HSResponse<Array<HSShopVisit>>>): CancellableRequest {
+    fun getShopVisits(id: String, credentials: String, handler: HSHandler<Array<HSShopVisit>>): CancellableRequest {
         return fuel.get("/shops/$id/visits", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
     }
 
@@ -49,7 +48,7 @@ class HappyShop(private val path: String,
      * TODO: doc
      * @return CancellableRequest
      */
-    fun getShopProducts(id: String, credentials: String, handler: ResultHandler<HSResponse<Array<HSShopVisit>>>): CancellableRequest {
+    fun getShopProducts(id: String, credentials: String, handler: HSHandler<Array<HSShopVisit>>): CancellableRequest {
         return fuel.get("/shops/$id/products", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
     }
 
