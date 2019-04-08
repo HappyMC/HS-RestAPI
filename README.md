@@ -2,15 +2,15 @@
 ## Schema
 ```json
 {
-  "message": "..." // message,
-  "code": "200" // http status code,
-  "data": {} // optional - can be array or object
+  "message": "...",
+  "code": 200,
+  "data": {}
 }
 ```
 
 * [message]: message sent by the server.
 * [code]: HTTP status code
-* [data]: Not always available, must be checked first. can be an object or an array.
+* [data?]: Not always available, must be checked first. can be an object or an array.
 
 ## Error Codes
 Below is the list of mistakes you should remember to handle your requests.\
