@@ -1,71 +1,42 @@
 package me.devnatan.hsapi.kotlin
 
 import com.github.kittinunf.fuel.core.FuelManager
-import com.github.kittinunf.fuel.core.requests.CancellableRequest
-import com.github.kittinunf.fuel.core.response
+import com.github.kittinunf.fuel.core.Parameters
+import com.github.kittinunf.fuel.coroutines.awaitObjectResponse
+import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
+import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.json.Json
+import me.devnatan.hsapi.kotlin.types.response.Response
+import me.devnatan.hsapi.kotlin.types.response.ResponseResult
+import me.devnatan.hsapi.kotlin.types.shop.Shop
 
-class HappyShop(private val path: String,
-                private val apiToken: String) {
+object HappyShop {
 
-    companion object {
+    var PATH = "https://api.XXX.net/v1"
+    var API_TOKEN = "???"
 
-        val instance: HappyShop by lazy {
-            HappyShop("https://api.XXX.net/v1", "?")
+    private val service by lazy {
+        FuelManager.instance.apply {
+            basePath = PATH
+            baseHeaders = mapOf("Authorization" to API_TOKEN)
         }
-
-    }
-
-    private val fuel: FuelManager = FuelManager.instance.apply {
-        basePath = path
-        baseHeaders = mapOf("Authorization" to apiToken)
     }
 
     /**
-     * TODO: doc
-     * @return CancellableRequest
+     * Make a request to get all stores in the server.
+     * You can set a limit on how many stores will be displayed in [optionalParameters]
+     *
+     * Optional Parameters:
+     * "limit" = limit of stores to display, default is 20
+     *
+     * Request:
+     * `method` = GET
+     * `path` = /shops
+     *
+     * @return [ResponseResult]
      */
-    fun getShops(handler: HSHandler<Array<HSShop>>): CancellableRequest {
-        return fuel.get("/shops").response(HSDeserializer(), handler)
-    }
-
-    /**
-     * TODO: doc
-     * @return CancellableRequest
-     */
-    fun getShop(id: String, handler: HSHandler<HSShop>): CancellableRequest {
-        return fuel.get("/shops/$id").response(HSDeserializer(), handler)
-    }
-
-    /**
-     * TODO: doc
-     * @return CancellableRequest
-     */
-    fun getShopVisits(id: String, credentials: String, handler: HSHandler<Array<HSShopVisit>>): CancellableRequest {
-        return fuel.get("/shops/$id/visits", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
-    }
-
-    /**
-     * TODO: doc
-     * @return CancellableRequest
-     */
-    fun getShopProducts(id: String, credentials: String, handler: HSHandler<Array<HSShopProduct>>): CancellableRequest {
-        return fuel.get("/shops/$id/products", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
-    }
-
-    /**
-     * TODO: doc
-     * @return CancellableRequest
-     */
-    fun getShopPayments(id: String, credentials: String, handler: HSHandler<Array<HSShopPayment>>): CancellableRequest {
-        return fuel.get("/shops/$id/payments", listOf("credentials" to credentials)).response(HSDeserializer(), handler)
-    }
-
-    /**
-     * TODO: doc
-     * @return CancellableRequest
-     */
-    fun getShopPayment(id: String, credentials: String, paymentId: String, handler: HSHandler<HSShopPayment>): CancellableRequest {
-        return fuel.get("/shops/$id/payments", listOf("credentials" to credentials, "id" to paymentId)).response(HSDeserializer(), handler)
+    suspend fun getShops(optionalParameters: Parameters = listOf("limit" to 20)): ResponseResult<List<Shop>> {
+        return service.get("/shops", parameters = optionalParameters).awaitObjectResponse(kotlinxDeserializerOf(Response.serializer(ArrayListSerializer(Shop.serializer())), Json.nonstrict))
     }
 
 }
