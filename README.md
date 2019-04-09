@@ -1,8 +1,8 @@
 # HappyShop *Rest-API*
 <a href="https://github.com/HappyMC/HS-RestAPI/blob/master/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg"></a>
 
-*HappyShop REST-API* is a Rest-API for communicating with the HappyShop API.
-Using [Fuel](https://github.com/kittinunf/fuel) for HTTP communication, we natively have support for asynchronous requests and coroutines.\
+*HappyShop REST-API* is a Rest-API for communicating with the HappyShop API.\
+Using [Fuel](https://github.com/kittinunf/fuel) for HTTP communication, we natively have support for asynchronous requests and coroutines.
 
 Currently we have only one module available
 * [`hs-kotlin`](https://github.com/HappyMC/HS-RestAPI/tree/master/hs-kotlin) to the Kotlin language
