@@ -7,15 +7,36 @@ Using [Fuel](https://github.com/kittinunf/fuel) for HTTP communication, we nativ
 Currently we have only one module available
 * [`hs-kotlin`](https://github.com/HappyMC/HS-RestAPI/tree/master/hs-kotlin) to the Kotlin language
 
+Quick example:
+```kotlin
+fun printShopsAsynchronously() {
+  launch {
+    /*
+     * Multi-declaration
+     * https://kotlinlang.org/docs/reference/multi-declarations.html
+     */
+    val (request, response, result) = HappyShop.getShops()
+
+    // Await result and...
+    println("OK! Process completed.")
+    println(result.message)
+  }
+
+  println("Hey, I was called before finishing!")
+}
+```
+
 ## Dependencies
 Depending on the module you are going to use it will need some dependencies to work as expected.
 
 ### Kotlin
 | Package | Description |
 | ------ | ------------ |
-| [`fuel`](https://github.com/kittinunf/fuel) | Core |
+| [`fuel`](https://github.com/kittinunf/fuel) | Core dependency |
 | [`fuel-coroutines`](https://github.com/kittinunf/fuel/blob/master/fuel-coroutines) | *KotlinX*: Execution with coroutines |
-| [`fuel-gson`](https://github.com/kittinunf/fuel/blob/master/fuel-gson) | Response deserialization |
+| [`fuel-kotlinx-serialization`](https://github.com/kittinunf/fuel/blob/master/fuel-kotlinx-serialization) | Response deserialization |
+| [`kotlin-test`](https://kotlinlang.org/api/latest/kotlin.test/index.html) | For tests only |
+| [`kotlin-test-junit5`](https://kotlinlang.org/api/latest/kotlin.test/kotlin.test.junit5/index.html) | For tests only |
 
 ## Coroutines
 *HappyShop REST-API* was developed using [Fuel](https://github.com/kittinunf/fuel), it has native support for [`kotlinx.coroutines`](https://github.com/kotlin/kotlinx.coroutines) and you can use them.
