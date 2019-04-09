@@ -20,30 +20,28 @@ class HappyShopTest {
 
     @Nested
     inner class GetShop {
+
         @Test
         fun `get all shops`() {
-            runBlocking {
-                val (_, response, result) = withContext(Dispatchers.IO) {
-                    HappyShop.getShops()
-                }
-
-                assertEquals(200, result.code)
-                assertEquals("OK", response.responseMessage)
+            val (_, response, result) = runBlocking {
+                HappyShop.getShops()
             }
+
+            assertEquals(200, result.code)
+            assertEquals("OK", response.responseMessage)
         }
 
 
         @Test
         fun `get all shops asynchronously`() {
             GlobalScope.launch(Dispatchers.IO) {
-                val (_, response, result) = async {
-                    HappyShop.getShops()
-                }.await()
+                val (_, response, result) = HappyShop.getShops()
 
                 assertEquals(200, result.code)
                 assertEquals("OK", response.responseMessage)
             }
         }
+
     }
 
 }
