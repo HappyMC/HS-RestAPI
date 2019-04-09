@@ -1,7 +1,7 @@
-# HappyShop *Rest-API*
+# HappyShop *REST-API*
 <a href="https://github.com/HappyMC/HS-RestAPI/blob/master/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg"></a>
 
-*HappyShop REST-API* is a Rest-API for communicating with the HappyShop API.\
+*HappyShop REST-API* is a REST-API for communicating with the HappyShop API.\
 Using [Fuel](https://github.com/kittinunf/fuel) for HTTP communication, we natively have support for asynchronous requests and coroutines.
 
 Currently we have only one module available
