@@ -13,7 +13,7 @@ class HappyShopTest {
 
         @BeforeAll @JvmStatic
         fun initialize() {
-            HappyShop.PATH = "http://localhost:8081"
+            HappyShop.PATH = "..."
         }
 
     }
@@ -35,11 +35,26 @@ class HappyShopTest {
         @Test
         fun `get all shops asynchronously`() {
             GlobalScope.launch(Dispatchers.IO) {
-                val (_, response, result) = HappyShop.getShops()
+                val (_, response, result) = async {
+                    HappyShop.getShops()
+                }.await()
 
                 assertEquals(200, result.code)
                 assertEquals("OK", response.responseMessage)
             }
+
+            // ...do something
+        }
+
+        @Test
+        fun `try to get unauthorized`() {
+            HappyShop.API_TOKEN = "wtf!?"
+            val (_, _, result) = runBlocking {
+                HappyShop.getShops()
+            }
+
+            // 401 Unauthorized
+            assertEquals(401, result.code)
         }
 
     }
