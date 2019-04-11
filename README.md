@@ -4,27 +4,8 @@
 *HappyShop REST-API* is a REST-API for communicating with the HappyShop API.\
 Using [Fuel](https://github.com/kittinunf/fuel) for HTTP communication, we natively have support for asynchronous requests and coroutines.
 
-Currently we have only one module available
-* [`hs-kotlin`](https://github.com/HappyMC/HS-RestAPI/tree/master/hs-kotlin) to the Kotlin language
-
-Quick example:
-```kotlin
-fun printShopsAsynchronously() {
-  launch {
-    /*
-     * Multi-declaration
-     * https://kotlinlang.org/docs/reference/multi-declarations.html
-     */
-    val (request, response, result) = HappyShop.getShops()
-
-    // Await result and...
-    println("OK! Process completed.")
-    println(result.message)
-  }
-
-  println("Hey, I was called before finishing!")
-}
-```
+This project currently supports 1 language:
+* **hs-kotlin** - API in Kotlin with Coroutines support
 
 ## Dependencies
 Depending on the module you are going to use it will need some dependencies to work as expected.
@@ -54,3 +35,6 @@ Thanks to all who help keep this project going.\
 <br/>
 Maintained by
 * [DevNatan](https://github.com/DevNatan)
+
+## Stay In Touch
+Join our Discord server: https://discord.gg/hJETZXc
