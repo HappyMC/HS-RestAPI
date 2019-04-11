@@ -1,9 +1,11 @@
 # HappyShop REST-API
+> HappyShop REST-API is used to communicate with the HappyShop API
+
 ![GitHub contributors][contributors-shield]
 ![Stars][stars-shield]
 [![MIT License][license-shield]][license-url]
 
-> HappyShop REST-API is used to communicate with the HappyShop API
+<br/>
 
 This project currently supports 1 language:
 * **hs-kotlin** - API in Kotlin with Coroutines support
@@ -23,12 +25,12 @@ The Kotlin module was developed using [Fuel](https://github.com/kittinunf/fuel),
 | [`kotlin-test-junit5`](https://kotlinlang.org/api/latest/kotlin.test/kotlin.test.junit5/index.html) | For tests only |
 
 ## Contributing
-The best way to submit a patch is to send us a pull request. Before submitting the pull request, make sure all existing tests are passing, and add the new test if it is required.
+Read the file [how to contribute](https://github.com/HappyMC/HS-RestAPI/blob/master/CONTRIBUTING.md).
 
 If you want to add new functionality, please file a new proposal issue first to make sure that it is not in progress already. If you have any questions, feel free to create a question issue.
 
 ## License
-HappyShop is released under [MIT](https://github.com/HappyMC/HS-RestAPI/blob/master/LICENSE) license.
+HappyShop REST-API is released under [MIT](https://github.com/HappyMC/HS-RestAPI/blob/master/LICENSE) license.
 
 ## Authors
 Thanks to all who help keep this project going.\
@@ -41,5 +43,5 @@ Join our Discord server: https://discord.gg/hJETZXc
 
 [contributors-shield]: https://img.shields.io/github/contributors/HappyMC/HS-RestAPI.svg
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?color=1bcc1b
-[license-url]: https://choosealicense.com/licenses/mit
+[license-url]: https://github.com/HappyMC/HS-RestAPI/blob/master/LICENSE
 [stars-shield]: https://img.shields.io/github/stars/HappyMC/HS-RestAPI.svg?color=1bcc1b
