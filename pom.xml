@@ -4,13 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.devnatan.hsapi.kotlin</groupId>
-    <artifactId>hs-kotlin</artifactId>
-    <version>1.0</version>
+    <groupId>me.devnatan.hsorg.sdk.kotlin</groupId>
+    <artifactId>hs-sdk-kt</artifactId>
+    <version>0.0.1-alpha</version>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://github.com/hs-org/hs-sdk-kt/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>devnatan</id>
+            <name>Natan V.</name>
+            <url>https://github.com/DevNatan</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/hs-org/hs-sdk-kt.git</url>
+    </scm>
 
     <properties>
         <fuel.version>2.2.1</fuel.version>
-        <kotlin.version>1.3.50</kotlin.version>
+        <kotlin.version>1.3.60</kotlin.version>
     </properties>
 
     <repositories>
@@ -25,6 +45,29 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit5</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.github.kittinunf.fuel</groupId>
             <artifactId>fuel</artifactId>
@@ -41,23 +84,6 @@
             <version>${fuel.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test-junit5</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-serialization-runtime</artifactId>
             <version>0.13.0</version>
@@ -71,7 +97,7 @@
 
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
